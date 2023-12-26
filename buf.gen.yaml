@@ -15,4 +15,4 @@ plugins:
     strategy: all
     opt:
       - allow_merge=true
-      - merge_file_name=public
+      - merge_file_name=openapi
