@@ -9,7 +9,7 @@ option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
     version: "1.0";
     description: "Provides API documentations for services.";
     contact: {
-      name: "ASC";
+      name: "MarieJ HR";
       url: "https://gtihub.com/mariej-hr/core";
       email: "support@mariej.com";
     };
