@@ -10,3 +10,9 @@ plugins:
   - plugin: go
     out: domain
     opt: paths=source_relative
+  - plugin: openapiv2
+    out: domain
+    strategy: all
+    opt:
+      - allow_merge=true
+      - merge_file_name=public
