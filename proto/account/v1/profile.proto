@@ -1,0 +1,142 @@
+syntax = "proto3";
+package account.v1;
+
+import "google/api/annotations.proto";
+import "google/api/httpbody.proto";
+import "google/protobuf/timestamp.proto";
+
+message Profile {
+  message Address {
+    string street = 1;
+    string number = 2;
+    optional string apartment = 3;
+    string city = 4;
+    string country = 5;
+  }
+
+  message Location {
+    string city = 1;
+    string country = 2;
+  }
+
+  message Experience {
+    enum Employment {
+      EMPLOYMENT_UNSPECIFIED = 0;
+      EMPLOYMENT_FULL_TIME = 1;
+      EMPLOYMENT_PART_TIME = 2;
+      EMPLOYMENT_ON_PROJECT_BASIS = 3;
+    }
+
+    enum Modality {
+      MODALITY_UNSPECIFIED = 0;
+      MODALITY_ON_SITE = 1;
+      MODALITY_HYBRID = 2;
+      MODALITY_REMOTE = 3;
+    }
+
+    string id = 1;
+    string company = 2;
+    Location location = 3;
+    google.protobuf.Timestamp start_date = 4;
+    optional google.protobuf.Timestamp end_date = 5;
+    Employment employment_type = 6;
+    Modality modality_type = 7;
+    string description = 8;
+    repeated string skills = 9;
+  }
+
+  message Education {
+    string id = 1;
+    string school = 2;
+    Location location = 3;
+    string degree = 4;
+    string field = 5;
+    google.protobuf.Timestamp start_date = 6;
+    optional google.protobuf.Timestamp end_date = 7;
+    optional string grade = 8;
+    optional string activities = 9;
+    string description = 10;
+    repeated string skills = 11;
+    repeated string media = 12;
+  }
+
+  message Certification {
+    string name = 1;
+    string issuer = 2;
+    google.protobuf.Timestamp issue_date = 5;
+    optional google.protobuf.Timestamp expiration_date = 6;
+    optional string credential_id = 7;
+    optional string credential_url = 8;
+    repeated string skills = 9;
+    repeated string media = 10;
+  }
+
+  message Skill {
+    string name = 1;
+    int32 rating = 2;
+  }
+
+  message Award {
+    string title = 1;
+    optional string associated_with = 2;
+    string issuer = 3;
+    google.protobuf.Timestamp issue_date = 4;
+    string description = 5;
+  }
+
+  message Language {
+    enum Proficiency {
+      PROFICIENCY_UNSPECIFIED = 0;
+      PROFICIENCY_A1 = 1;
+      PROFICIENCY_A2 = 2;
+      PROFICIENCY_B1 = 3;
+      PROFICIENCY_B2 = 4;
+      PROFICIENCY_C1 = 5;
+      PROFICIENCY_C2 = 6;
+    }
+
+    string language = 1;
+    Proficiency proficiency = 2;
+  }
+
+  message Interest {
+    message Sport { string name = 1; }
+    message Art { string name = 1; }
+    message Company { string name = 1; }
+    message Person { string name = 1; }
+
+    oneof kind {
+      Sport sport = 1;
+      Art art = 2;
+      Company company = 3;
+      Person person = 4;
+    }
+  }
+
+  string firstname = 1;
+  string lastname = 2;
+  string title = 3;
+  Address address = 4;
+  string about = 5;
+  repeated Experience experiences = 6;
+  repeated Education educations = 7;
+  repeated Certification certifications = 8;
+  repeated Skill skills = 9;
+  repeated Award awards = 10;
+  repeated Language languages = 11;
+  repeated Interest interests = 12;
+}
+
+service ProfileService {
+  rpc GetProfile(GetProfileRequest) returns (GetProfileResponse) {
+    option (google.api.http) = {
+      get : "/v1/{tenant}/profile/{sub}"
+    };
+  };
+}
+
+message GetProfileRequest {
+  string tenant = 1;
+  string sub = 2;
+}
+message GetProfileResponse { Profile profile = 1; }

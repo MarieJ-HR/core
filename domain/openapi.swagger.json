@@ -13,6 +13,9 @@
   "tags": [
     {
       "name": "AccountService"
+    },
+    {
+      "name": "ProfileService"
     }
   ],
   "schemes": [
@@ -158,9 +161,338 @@
           "AccountService"
         ]
       }
+    },
+    "/v1/{tenant}/profile/{sub}": {
+      "get": {
+        "operationId": "ProfileService_GetProfile",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1GetProfileResponse"
+            }
+          },
+          "400": {
+            "description": "Bad request.",
+            "schema": {
+              "$ref": "#/definitions/v1ErrorResponse"
+            }
+          },
+          "403": {
+            "description": "Unauthorized.",
+            "schema": {
+              "$ref": "#/definitions/protobufEmpty"
+            }
+          },
+          "404": {
+            "description": "Not found.",
+            "schema": {
+              "$ref": "#/definitions/protobufEmpty"
+            }
+          },
+          "500": {
+            "description": "Server error.",
+            "schema": {
+              "$ref": "#/definitions/protobufEmpty"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "sub",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "ProfileService"
+        ]
+      }
     }
   },
   "definitions": {
+    "ExperienceEmployment": {
+      "type": "string",
+      "enum": [
+        "EMPLOYMENT_UNSPECIFIED",
+        "EMPLOYMENT_FULL_TIME",
+        "EMPLOYMENT_PART_TIME",
+        "EMPLOYMENT_ON_PROJECT_BASIS"
+      ],
+      "default": "EMPLOYMENT_UNSPECIFIED"
+    },
+    "ExperienceModality": {
+      "type": "string",
+      "enum": [
+        "MODALITY_UNSPECIFIED",
+        "MODALITY_ON_SITE",
+        "MODALITY_HYBRID",
+        "MODALITY_REMOTE"
+      ],
+      "default": "MODALITY_UNSPECIFIED"
+    },
+    "InterestArt": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "InterestCompany": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "InterestPerson": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "InterestSport": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "LanguageProficiency": {
+      "type": "string",
+      "enum": [
+        "PROFICIENCY_UNSPECIFIED",
+        "PROFICIENCY_A1",
+        "PROFICIENCY_A2",
+        "PROFICIENCY_B1",
+        "PROFICIENCY_B2",
+        "PROFICIENCY_C1",
+        "PROFICIENCY_C2"
+      ],
+      "default": "PROFICIENCY_UNSPECIFIED"
+    },
+    "ProfileAddress": {
+      "type": "object",
+      "properties": {
+        "street": {
+          "type": "string"
+        },
+        "number": {
+          "type": "string"
+        },
+        "apartment": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        }
+      }
+    },
+    "ProfileAward": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "associatedWith": {
+          "type": "string"
+        },
+        "issuer": {
+          "type": "string"
+        },
+        "issueDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "ProfileCertification": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "issuer": {
+          "type": "string"
+        },
+        "issueDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "expirationDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "credentialId": {
+          "type": "string"
+        },
+        "credentialUrl": {
+          "type": "string"
+        },
+        "skills": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "media": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "ProfileEducation": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "school": {
+          "type": "string"
+        },
+        "location": {
+          "$ref": "#/definitions/v1ProfileLocation"
+        },
+        "degree": {
+          "type": "string"
+        },
+        "field": {
+          "type": "string"
+        },
+        "startDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "endDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "grade": {
+          "type": "string"
+        },
+        "activities": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "skills": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "media": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "ProfileExperience": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "company": {
+          "type": "string"
+        },
+        "location": {
+          "$ref": "#/definitions/v1ProfileLocation"
+        },
+        "startDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "endDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "employmentType": {
+          "$ref": "#/definitions/ExperienceEmployment"
+        },
+        "modalityType": {
+          "$ref": "#/definitions/ExperienceModality"
+        },
+        "description": {
+          "type": "string"
+        },
+        "skills": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "ProfileInterest": {
+      "type": "object",
+      "properties": {
+        "sport": {
+          "$ref": "#/definitions/InterestSport"
+        },
+        "art": {
+          "$ref": "#/definitions/InterestArt"
+        },
+        "company": {
+          "$ref": "#/definitions/InterestCompany"
+        },
+        "person": {
+          "$ref": "#/definitions/InterestPerson"
+        }
+      }
+    },
+    "ProfileLanguage": {
+      "type": "object",
+      "properties": {
+        "language": {
+          "type": "string"
+        },
+        "proficiency": {
+          "$ref": "#/definitions/LanguageProficiency"
+        }
+      }
+    },
+    "ProfileSkill": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "rating": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
     "protobufAny": {
       "type": "object",
       "properties": {
@@ -247,6 +579,87 @@
       "type": "object",
       "properties": {
         "message": {
+          "type": "string"
+        }
+      }
+    },
+    "v1GetProfileResponse": {
+      "type": "object",
+      "properties": {
+        "profile": {
+          "$ref": "#/definitions/v1Profile"
+        }
+      }
+    },
+    "v1Profile": {
+      "type": "object",
+      "properties": {
+        "firstname": {
+          "type": "string"
+        },
+        "lastname": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "address": {
+          "$ref": "#/definitions/ProfileAddress"
+        },
+        "about": {
+          "type": "string"
+        },
+        "experiences": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProfileExperience"
+          }
+        },
+        "educations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProfileEducation"
+          }
+        },
+        "certifications": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProfileCertification"
+          }
+        },
+        "skills": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProfileSkill"
+          }
+        },
+        "awards": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProfileAward"
+          }
+        },
+        "languages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProfileLanguage"
+          }
+        },
+        "interests": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProfileInterest"
+          }
+        }
+      }
+    },
+    "v1ProfileLocation": {
+      "type": "object",
+      "properties": {
+        "city": {
+          "type": "string"
+        },
+        "country": {
           "type": "string"
         }
       }
