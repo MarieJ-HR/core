@@ -125,6 +125,9 @@ message Profile {
   repeated Award awards = 10;
   repeated Language languages = 11;
   repeated Interest interests = 12;
+
+  optional string profile_picture = 13;
+  optional string profile_background = 14;
 }
 
 service ProfileService {

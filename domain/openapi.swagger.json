@@ -650,6 +650,12 @@
           "items": {
             "$ref": "#/definitions/ProfileInterest"
           }
+        },
+        "profilePicture": {
+          "type": "string"
+        },
+        "profileBackground": {
+          "type": "string"
         }
       }
     },
