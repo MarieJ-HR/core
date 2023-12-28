@@ -196,7 +196,36 @@
       }
     },
     "v1Account": {
-      "type": "object"
+      "type": "object",
+      "properties": {
+        "sub": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "username": {
+          "type": "string"
+        },
+        "roles": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Role"
+          }
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "lastLogin": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
     },
     "v1CurrentAccountResourceResponse": {
       "type": "object",
@@ -221,6 +250,18 @@
           "type": "string"
         }
       }
+    },
+    "v1Role": {
+      "type": "string",
+      "enum": [
+        "ROLE_UNSPECIFIED",
+        "ROLE_ADMIN",
+        "ROLE_MANAGER",
+        "ROLE_USER",
+        "ROLE_GUEST"
+      ],
+      "default": "ROLE_UNSPECIFIED",
+      "title": "- ROLE_UNSPECIFIED: Role is not defined\n - ROLE_ADMIN: View all data. Create new managers"
     },
     "v1Scope": {
       "type": "string",
