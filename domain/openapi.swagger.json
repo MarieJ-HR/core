@@ -25,7 +25,7 @@
     "application/json"
   ],
   "paths": {
-    "/v1/{tenant}/accounts/me": {
+    "/v1/{tenant}/accounts/{scope}/me": {
       "get": {
         "operationId": "AccountService_CurrentAccount",
         "responses": {
@@ -69,6 +69,86 @@
         "parameters": [
           {
             "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "scope",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "SCOPE_UNSPECIFIED",
+              "SCOPE_SYSTEM"
+            ]
+          }
+        ],
+        "tags": [
+          "AccountService"
+        ]
+      }
+    },
+    "/v1/{tenant}/accounts/{scope}/resources/{resource}/me": {
+      "get": {
+        "operationId": "AccountService_CurrentAccountResource",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1CurrentAccountResourceResponse"
+            }
+          },
+          "400": {
+            "description": "Bad request.",
+            "schema": {
+              "$ref": "#/definitions/v1ErrorResponse"
+            }
+          },
+          "403": {
+            "description": "Unauthorized.",
+            "schema": {
+              "$ref": "#/definitions/protobufEmpty"
+            }
+          },
+          "404": {
+            "description": "Not found.",
+            "schema": {
+              "$ref": "#/definitions/protobufEmpty"
+            }
+          },
+          "500": {
+            "description": "Server error.",
+            "schema": {
+              "$ref": "#/definitions/protobufEmpty"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "scope",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "SCOPE_UNSPECIFIED",
+              "SCOPE_SYSTEM"
+            ]
+          },
+          {
+            "name": "resource",
             "in": "path",
             "required": true,
             "type": "string"
@@ -118,6 +198,14 @@
     "v1Account": {
       "type": "object"
     },
+    "v1CurrentAccountResourceResponse": {
+      "type": "object",
+      "properties": {
+        "account": {
+          "$ref": "#/definitions/v1Account"
+        }
+      }
+    },
     "v1CurrentAccountResponse": {
       "type": "object",
       "properties": {
@@ -133,6 +221,14 @@
           "type": "string"
         }
       }
+    },
+    "v1Scope": {
+      "type": "string",
+      "enum": [
+        "SCOPE_UNSPECIFIED",
+        "SCOPE_SYSTEM"
+      ],
+      "default": "SCOPE_UNSPECIFIED"
     }
   },
   "securityDefinitions": {

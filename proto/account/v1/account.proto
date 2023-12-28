@@ -1,6 +1,7 @@
 syntax = "proto3";
 package account.v1;
 
+import "account/v1/role.proto";
 import "google/api/annotations.proto";
 import "google/api/httpbody.proto";
 // import "google/protobuf/duration.proto";
@@ -12,10 +13,26 @@ message Account {}
 service AccountService {
   rpc CurrentAccount(CurrentAccountRequest) returns (CurrentAccountResponse) {
     option (google.api.http) = {
-      get : "/v1/{tenant}/accounts/me"
+      get : "/v1/{tenant}/accounts/{scope}/me"
     };
   };
+  rpc CurrentAccountResource(CurrentAccountResourceRequest)
+      returns (CurrentAccountResourceResponse) {
+    option (google.api.http) = {
+      get : "/v1/{tenant}/accounts/{scope}/resources/{resource}/me"
+    };
+  }
 }
 
-message CurrentAccountRequest { string tenant = 1; }
+message CurrentAccountRequest {
+  string tenant = 1;
+  Scope scope = 2;
+}
 message CurrentAccountResponse { Account account = 1; }
+
+message CurrentAccountResourceRequest {
+  string tenant = 1;
+  Scope scope = 2;
+  string resource = 3;
+}
+message CurrentAccountResourceResponse { Account account = 1; }

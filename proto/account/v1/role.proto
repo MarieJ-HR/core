@@ -1,0 +1,16 @@
+syntax = "proto3";
+package account.v1;
+enum Scope {
+  SCOPE_UNSPECIFIED = 0;
+  SCOPE_SYSTEM = 1;
+}
+
+enum Role {
+  /* Role is not defined */
+  ROLE_UNSPECIFIED = 0;
+  /* View all data. Create new managers */
+  ROLE_ADMIN = 1;
+  ROLE_MANAGER = 2;
+  ROLE_USER = 4;
+  ROLE_GUEST = 5;
+}
