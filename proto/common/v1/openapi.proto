@@ -1,9 +1,6 @@
 syntax = "proto3";
 package common.v1;
 
-import "common/v1/response.proto";
-import "google/api/annotations.proto";
-import "google/protobuf/empty.proto";
 import "protoc-gen-openapiv2/options/annotations.proto";
 
 option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
@@ -87,11 +84,3 @@ option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
     }
   }
 };
-
-service HealthService {
-  rpc Check(google.protobuf.Empty) returns (BoolResponse) {
-    option (google.api.http) = {
-      get : "/v1/health"
-    };
-  }
-}

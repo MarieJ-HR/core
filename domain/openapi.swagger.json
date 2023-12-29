@@ -12,13 +12,13 @@
   },
   "tags": [
     {
-      "name": "HealthService"
-    },
-    {
       "name": "AccountService"
     },
     {
       "name": "ProfileService"
+    },
+    {
+      "name": "HealthService"
     }
   ],
   "schemes": [
@@ -31,14 +31,14 @@
     "application/json"
   ],
   "paths": {
-    "/v1/health": {
+    "/v1/check": {
       "get": {
         "operationId": "HealthService_Check",
         "responses": {
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/v1BoolResponse"
+              "$ref": "#/definitions/v1HealthCheckResponse"
             }
           },
           "400": {
@@ -72,6 +72,77 @@
             }
           }
         },
+        "parameters": [
+          {
+            "name": "service",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "HealthService"
+        ]
+      }
+    },
+    "/v1/watch": {
+      "get": {
+        "operationId": "HealthService_Watch",
+        "responses": {
+          "200": {
+            "description": "A successful response.(streaming responses)",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "result": {
+                  "$ref": "#/definitions/v1HealthCheckResponse"
+                },
+                "error": {
+                  "$ref": "#/definitions/rpcStatus"
+                }
+              },
+              "title": "Stream result of v1HealthCheckResponse"
+            }
+          },
+          "400": {
+            "description": "Bad request.",
+            "schema": {
+              "$ref": "#/definitions/v1ErrorResponse"
+            }
+          },
+          "403": {
+            "description": "Unauthorized.",
+            "schema": {
+              "$ref": "#/definitions/protobufEmpty"
+            }
+          },
+          "404": {
+            "description": "Not found.",
+            "schema": {
+              "$ref": "#/definitions/protobufEmpty"
+            }
+          },
+          "500": {
+            "description": "Server error.",
+            "schema": {
+              "$ref": "#/definitions/protobufEmpty"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "service",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
         "tags": [
           "HealthService"
         ]
@@ -292,6 +363,17 @@
         "MODALITY_REMOTE"
       ],
       "default": "MODALITY_UNSPECIFIED"
+    },
+    "HealthCheckResponseServingStatus": {
+      "type": "string",
+      "enum": [
+        "UNKNOWN",
+        "SERVING",
+        "NOT_SERVING",
+        "SERVICE_UNKNOWN"
+      ],
+      "default": "UNKNOWN",
+      "description": " - SERVICE_UNKNOWN: Used only by the Watch method."
     },
     "InterestArt": {
       "type": "object",
@@ -608,14 +690,6 @@
         }
       }
     },
-    "v1BoolResponse": {
-      "type": "object",
-      "properties": {
-        "success": {
-          "type": "boolean"
-        }
-      }
-    },
     "v1CurrentAccountResourceResponse": {
       "type": "object",
       "properties": {
@@ -645,6 +719,14 @@
       "properties": {
         "profile": {
           "$ref": "#/definitions/v1Profile"
+        }
+      }
+    },
+    "v1HealthCheckResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "$ref": "#/definitions/HealthCheckResponseServingStatus"
         }
       }
     },
