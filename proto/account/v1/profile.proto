@@ -149,6 +149,12 @@ service ProfileService {
       body : "body"
     };
   };
+  rpc DeleteProfile(DeleteProfileRequest) returns (common.v1.BoolResponse) {
+    option (google.api.http) = {
+      delete : "/v1/{tenant}/profiles/{sub}"
+
+    };
+  };
 }
 
 message GetProfileRequest {
@@ -171,4 +177,9 @@ message SetProfileRequest {
   string tenant = 1;
   string sub = 2;
   Profile body = 3;
+}
+
+message DeleteProfileRequest {
+  string tenant = 1;
+  string sub = 2;
 }

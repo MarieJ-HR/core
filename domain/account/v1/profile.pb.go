@@ -615,6 +615,61 @@ func (x *SetProfileRequest) GetBody() *Profile {
 	return nil
 }
 
+type DeleteProfileRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Tenant string `protobuf:"bytes,1,opt,name=tenant,proto3" json:"tenant,omitempty"`
+	Sub    string `protobuf:"bytes,2,opt,name=sub,proto3" json:"sub,omitempty"`
+}
+
+func (x *DeleteProfileRequest) Reset() {
+	*x = DeleteProfileRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_account_v1_profile_proto_msgTypes[6]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *DeleteProfileRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteProfileRequest) ProtoMessage() {}
+
+func (x *DeleteProfileRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_account_v1_profile_proto_msgTypes[6]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteProfileRequest.ProtoReflect.Descriptor instead.
+func (*DeleteProfileRequest) Descriptor() ([]byte, []int) {
+	return file_account_v1_profile_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *DeleteProfileRequest) GetTenant() string {
+	if x != nil {
+		return x.Tenant
+	}
+	return ""
+}
+
+func (x *DeleteProfileRequest) GetSub() string {
+	if x != nil {
+		return x.Sub
+	}
+	return ""
+}
+
 type Profile_Address struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -630,7 +685,7 @@ type Profile_Address struct {
 func (x *Profile_Address) Reset() {
 	*x = Profile_Address{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_account_v1_profile_proto_msgTypes[6]
+		mi := &file_account_v1_profile_proto_msgTypes[7]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -643,7 +698,7 @@ func (x *Profile_Address) String() string {
 func (*Profile_Address) ProtoMessage() {}
 
 func (x *Profile_Address) ProtoReflect() protoreflect.Message {
-	mi := &file_account_v1_profile_proto_msgTypes[6]
+	mi := &file_account_v1_profile_proto_msgTypes[7]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -706,7 +761,7 @@ type Profile_Location struct {
 func (x *Profile_Location) Reset() {
 	*x = Profile_Location{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_account_v1_profile_proto_msgTypes[7]
+		mi := &file_account_v1_profile_proto_msgTypes[8]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -719,7 +774,7 @@ func (x *Profile_Location) String() string {
 func (*Profile_Location) ProtoMessage() {}
 
 func (x *Profile_Location) ProtoReflect() protoreflect.Message {
-	mi := &file_account_v1_profile_proto_msgTypes[7]
+	mi := &file_account_v1_profile_proto_msgTypes[8]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -768,7 +823,7 @@ type Profile_Experience struct {
 func (x *Profile_Experience) Reset() {
 	*x = Profile_Experience{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_account_v1_profile_proto_msgTypes[8]
+		mi := &file_account_v1_profile_proto_msgTypes[9]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -781,7 +836,7 @@ func (x *Profile_Experience) String() string {
 func (*Profile_Experience) ProtoMessage() {}
 
 func (x *Profile_Experience) ProtoReflect() protoreflect.Message {
-	mi := &file_account_v1_profile_proto_msgTypes[8]
+	mi := &file_account_v1_profile_proto_msgTypes[9]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -882,7 +937,7 @@ type Profile_Education struct {
 func (x *Profile_Education) Reset() {
 	*x = Profile_Education{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_account_v1_profile_proto_msgTypes[9]
+		mi := &file_account_v1_profile_proto_msgTypes[10]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -895,7 +950,7 @@ func (x *Profile_Education) String() string {
 func (*Profile_Education) ProtoMessage() {}
 
 func (x *Profile_Education) ProtoReflect() protoreflect.Message {
-	mi := &file_account_v1_profile_proto_msgTypes[9]
+	mi := &file_account_v1_profile_proto_msgTypes[10]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1013,7 +1068,7 @@ type Profile_Certification struct {
 func (x *Profile_Certification) Reset() {
 	*x = Profile_Certification{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_account_v1_profile_proto_msgTypes[10]
+		mi := &file_account_v1_profile_proto_msgTypes[11]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1026,7 +1081,7 @@ func (x *Profile_Certification) String() string {
 func (*Profile_Certification) ProtoMessage() {}
 
 func (x *Profile_Certification) ProtoReflect() protoreflect.Message {
-	mi := &file_account_v1_profile_proto_msgTypes[10]
+	mi := &file_account_v1_profile_proto_msgTypes[11]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1110,7 +1165,7 @@ type Profile_Skill struct {
 func (x *Profile_Skill) Reset() {
 	*x = Profile_Skill{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_account_v1_profile_proto_msgTypes[11]
+		mi := &file_account_v1_profile_proto_msgTypes[12]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1123,7 +1178,7 @@ func (x *Profile_Skill) String() string {
 func (*Profile_Skill) ProtoMessage() {}
 
 func (x *Profile_Skill) ProtoReflect() protoreflect.Message {
-	mi := &file_account_v1_profile_proto_msgTypes[11]
+	mi := &file_account_v1_profile_proto_msgTypes[12]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1168,7 +1223,7 @@ type Profile_Award struct {
 func (x *Profile_Award) Reset() {
 	*x = Profile_Award{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_account_v1_profile_proto_msgTypes[12]
+		mi := &file_account_v1_profile_proto_msgTypes[13]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1181,7 +1236,7 @@ func (x *Profile_Award) String() string {
 func (*Profile_Award) ProtoMessage() {}
 
 func (x *Profile_Award) ProtoReflect() protoreflect.Message {
-	mi := &file_account_v1_profile_proto_msgTypes[12]
+	mi := &file_account_v1_profile_proto_msgTypes[13]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1244,7 +1299,7 @@ type Profile_Language struct {
 func (x *Profile_Language) Reset() {
 	*x = Profile_Language{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_account_v1_profile_proto_msgTypes[13]
+		mi := &file_account_v1_profile_proto_msgTypes[14]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1257,7 +1312,7 @@ func (x *Profile_Language) String() string {
 func (*Profile_Language) ProtoMessage() {}
 
 func (x *Profile_Language) ProtoReflect() protoreflect.Message {
-	mi := &file_account_v1_profile_proto_msgTypes[13]
+	mi := &file_account_v1_profile_proto_msgTypes[14]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1304,7 +1359,7 @@ type Profile_Interest struct {
 func (x *Profile_Interest) Reset() {
 	*x = Profile_Interest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_account_v1_profile_proto_msgTypes[14]
+		mi := &file_account_v1_profile_proto_msgTypes[15]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1317,7 +1372,7 @@ func (x *Profile_Interest) String() string {
 func (*Profile_Interest) ProtoMessage() {}
 
 func (x *Profile_Interest) ProtoReflect() protoreflect.Message {
-	mi := &file_account_v1_profile_proto_msgTypes[14]
+	mi := &file_account_v1_profile_proto_msgTypes[15]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1407,7 +1462,7 @@ type Profile_Interest_Sport struct {
 func (x *Profile_Interest_Sport) Reset() {
 	*x = Profile_Interest_Sport{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_account_v1_profile_proto_msgTypes[15]
+		mi := &file_account_v1_profile_proto_msgTypes[16]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1420,7 +1475,7 @@ func (x *Profile_Interest_Sport) String() string {
 func (*Profile_Interest_Sport) ProtoMessage() {}
 
 func (x *Profile_Interest_Sport) ProtoReflect() protoreflect.Message {
-	mi := &file_account_v1_profile_proto_msgTypes[15]
+	mi := &file_account_v1_profile_proto_msgTypes[16]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1454,7 +1509,7 @@ type Profile_Interest_Art struct {
 func (x *Profile_Interest_Art) Reset() {
 	*x = Profile_Interest_Art{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_account_v1_profile_proto_msgTypes[16]
+		mi := &file_account_v1_profile_proto_msgTypes[17]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1467,7 +1522,7 @@ func (x *Profile_Interest_Art) String() string {
 func (*Profile_Interest_Art) ProtoMessage() {}
 
 func (x *Profile_Interest_Art) ProtoReflect() protoreflect.Message {
-	mi := &file_account_v1_profile_proto_msgTypes[16]
+	mi := &file_account_v1_profile_proto_msgTypes[17]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1501,7 +1556,7 @@ type Profile_Interest_Company struct {
 func (x *Profile_Interest_Company) Reset() {
 	*x = Profile_Interest_Company{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_account_v1_profile_proto_msgTypes[17]
+		mi := &file_account_v1_profile_proto_msgTypes[18]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1514,7 +1569,7 @@ func (x *Profile_Interest_Company) String() string {
 func (*Profile_Interest_Company) ProtoMessage() {}
 
 func (x *Profile_Interest_Company) ProtoReflect() protoreflect.Message {
-	mi := &file_account_v1_profile_proto_msgTypes[17]
+	mi := &file_account_v1_profile_proto_msgTypes[18]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1548,7 +1603,7 @@ type Profile_Interest_Person struct {
 func (x *Profile_Interest_Person) Reset() {
 	*x = Profile_Interest_Person{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_account_v1_profile_proto_msgTypes[18]
+		mi := &file_account_v1_profile_proto_msgTypes[19]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -1561,7 +1616,7 @@ func (x *Profile_Interest_Person) String() string {
 func (*Profile_Interest_Person) ProtoMessage() {}
 
 func (x *Profile_Interest_Person) ProtoReflect() protoreflect.Message {
-	mi := &file_account_v1_profile_proto_msgTypes[18]
+	mi := &file_account_v1_profile_proto_msgTypes[19]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1839,40 +1894,51 @@ var file_account_v1_profile_proto_rawDesc = []byte{
 	0x74, 0x12, 0x10, 0x0a, 0x03, 0x73, 0x75, 0x62, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03,
 	0x73, 0x75, 0x62, 0x12, 0x27, 0x0a, 0x04, 0x62, 0x6f, 0x64, 0x79, 0x18, 0x03, 0x20, 0x01, 0x28,
 	0x0b, 0x32, 0x13, 0x2e, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x2e, 0x76, 0x31, 0x2e, 0x50,
-	0x72, 0x6f, 0x66, 0x69, 0x6c, 0x65, 0x52, 0x04, 0x62, 0x6f, 0x64, 0x79, 0x32, 0xe2, 0x02, 0x0a,
-	0x0e, 0x50, 0x72, 0x6f, 0x66, 0x69, 0x6c, 0x65, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12,
-	0x70, 0x0a, 0x0a, 0x47, 0x65, 0x74, 0x50, 0x72, 0x6f, 0x66, 0x69, 0x6c, 0x65, 0x12, 0x1d, 0x2e,
-	0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x2e, 0x76, 0x31, 0x2e, 0x47, 0x65, 0x74, 0x50, 0x72,
-	0x6f, 0x66, 0x69, 0x6c, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1e, 0x2e, 0x61,
-	0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x2e, 0x76, 0x31, 0x2e, 0x47, 0x65, 0x74, 0x50, 0x72, 0x6f,
-	0x66, 0x69, 0x6c, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x23, 0x82, 0xd3,
-	0xe4, 0x93, 0x02, 0x1d, 0x12, 0x1b, 0x2f, 0x76, 0x31, 0x2f, 0x7b, 0x74, 0x65, 0x6e, 0x61, 0x6e,
-	0x74, 0x7d, 0x2f, 0x70, 0x72, 0x6f, 0x66, 0x69, 0x6c, 0x65, 0x73, 0x2f, 0x7b, 0x73, 0x75, 0x62,
-	0x7d, 0x12, 0x6d, 0x0a, 0x0b, 0x47, 0x65, 0x74, 0x50, 0x72, 0x6f, 0x66, 0x69, 0x6c, 0x65, 0x73,
-	0x12, 0x1e, 0x2e, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x2e, 0x76, 0x31, 0x2e, 0x47, 0x65,
-	0x74, 0x50, 0x72, 0x6f, 0x66, 0x69, 0x6c, 0x65, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
-	0x1a, 0x1f, 0x2e, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x2e, 0x76, 0x31, 0x2e, 0x47, 0x65,
-	0x74, 0x50, 0x72, 0x6f, 0x66, 0x69, 0x6c, 0x65, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73,
-	0x65, 0x22, 0x1d, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x17, 0x12, 0x15, 0x2f, 0x76, 0x31, 0x2f, 0x7b,
-	0x74, 0x65, 0x6e, 0x61, 0x6e, 0x74, 0x7d, 0x2f, 0x70, 0x72, 0x6f, 0x66, 0x69, 0x6c, 0x65, 0x73,
-	0x12, 0x6f, 0x0a, 0x0a, 0x53, 0x65, 0x74, 0x50, 0x72, 0x6f, 0x66, 0x69, 0x6c, 0x65, 0x12, 0x1d,
-	0x2e, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x2e, 0x76, 0x31, 0x2e, 0x53, 0x65, 0x74, 0x50,
-	0x72, 0x6f, 0x66, 0x69, 0x6c, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x17, 0x2e,
-	0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x76, 0x31, 0x2e, 0x42, 0x6f, 0x6f, 0x6c, 0x52, 0x65,
-	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x29, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x23, 0x3a, 0x04,
-	0x62, 0x6f, 0x64, 0x79, 0x1a, 0x1b, 0x2f, 0x76, 0x31, 0x2f, 0x7b, 0x74, 0x65, 0x6e, 0x61, 0x6e,
-	0x74, 0x7d, 0x2f, 0x70, 0x72, 0x6f, 0x66, 0x69, 0x6c, 0x65, 0x73, 0x2f, 0x7b, 0x73, 0x75, 0x62,
-	0x7d, 0x42, 0x9e, 0x01, 0x0a, 0x0e, 0x63, 0x6f, 0x6d, 0x2e, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e,
-	0x74, 0x2e, 0x76, 0x31, 0x42, 0x0c, 0x50, 0x72, 0x6f, 0x66, 0x69, 0x6c, 0x65, 0x50, 0x72, 0x6f,
-	0x74, 0x6f, 0x50, 0x01, 0x5a, 0x35, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d,
-	0x2f, 0x6d, 0x61, 0x72, 0x69, 0x65, 0x6a, 0x2d, 0x68, 0x72, 0x2f, 0x63, 0x6f, 0x72, 0x65, 0x2f,
-	0x64, 0x6f, 0x6d, 0x61, 0x69, 0x6e, 0x2f, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x2f, 0x76,
-	0x31, 0x3b, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x76, 0x31, 0xa2, 0x02, 0x03, 0x41, 0x58,
-	0x58, 0xaa, 0x02, 0x0a, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x2e, 0x56, 0x31, 0xca, 0x02,
-	0x0a, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x5c, 0x56, 0x31, 0xe2, 0x02, 0x16, 0x41, 0x63,
-	0x63, 0x6f, 0x75, 0x6e, 0x74, 0x5c, 0x56, 0x31, 0x5c, 0x47, 0x50, 0x42, 0x4d, 0x65, 0x74, 0x61,
-	0x64, 0x61, 0x74, 0x61, 0xea, 0x02, 0x0b, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x3a, 0x3a,
-	0x56, 0x31, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x72, 0x6f, 0x66, 0x69, 0x6c, 0x65, 0x52, 0x04, 0x62, 0x6f, 0x64, 0x79, 0x22, 0x40, 0x0a, 0x14,
+	0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x50, 0x72, 0x6f, 0x66, 0x69, 0x6c, 0x65, 0x52, 0x65, 0x71,
+	0x75, 0x65, 0x73, 0x74, 0x12, 0x16, 0x0a, 0x06, 0x74, 0x65, 0x6e, 0x61, 0x6e, 0x74, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x74, 0x65, 0x6e, 0x61, 0x6e, 0x74, 0x12, 0x10, 0x0a, 0x03,
+	0x73, 0x75, 0x62, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x73, 0x75, 0x62, 0x32, 0xd3,
+	0x03, 0x0a, 0x0e, 0x50, 0x72, 0x6f, 0x66, 0x69, 0x6c, 0x65, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63,
+	0x65, 0x12, 0x70, 0x0a, 0x0a, 0x47, 0x65, 0x74, 0x50, 0x72, 0x6f, 0x66, 0x69, 0x6c, 0x65, 0x12,
+	0x1d, 0x2e, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x2e, 0x76, 0x31, 0x2e, 0x47, 0x65, 0x74,
+	0x50, 0x72, 0x6f, 0x66, 0x69, 0x6c, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1e,
+	0x2e, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x2e, 0x76, 0x31, 0x2e, 0x47, 0x65, 0x74, 0x50,
+	0x72, 0x6f, 0x66, 0x69, 0x6c, 0x65, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x23,
+	0x82, 0xd3, 0xe4, 0x93, 0x02, 0x1d, 0x12, 0x1b, 0x2f, 0x76, 0x31, 0x2f, 0x7b, 0x74, 0x65, 0x6e,
+	0x61, 0x6e, 0x74, 0x7d, 0x2f, 0x70, 0x72, 0x6f, 0x66, 0x69, 0x6c, 0x65, 0x73, 0x2f, 0x7b, 0x73,
+	0x75, 0x62, 0x7d, 0x12, 0x6d, 0x0a, 0x0b, 0x47, 0x65, 0x74, 0x50, 0x72, 0x6f, 0x66, 0x69, 0x6c,
+	0x65, 0x73, 0x12, 0x1e, 0x2e, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x2e, 0x76, 0x31, 0x2e,
+	0x47, 0x65, 0x74, 0x50, 0x72, 0x6f, 0x66, 0x69, 0x6c, 0x65, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65,
+	0x73, 0x74, 0x1a, 0x1f, 0x2e, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x2e, 0x76, 0x31, 0x2e,
+	0x47, 0x65, 0x74, 0x50, 0x72, 0x6f, 0x66, 0x69, 0x6c, 0x65, 0x73, 0x52, 0x65, 0x73, 0x70, 0x6f,
+	0x6e, 0x73, 0x65, 0x22, 0x1d, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x17, 0x12, 0x15, 0x2f, 0x76, 0x31,
+	0x2f, 0x7b, 0x74, 0x65, 0x6e, 0x61, 0x6e, 0x74, 0x7d, 0x2f, 0x70, 0x72, 0x6f, 0x66, 0x69, 0x6c,
+	0x65, 0x73, 0x12, 0x6f, 0x0a, 0x0a, 0x53, 0x65, 0x74, 0x50, 0x72, 0x6f, 0x66, 0x69, 0x6c, 0x65,
+	0x12, 0x1d, 0x2e, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x2e, 0x76, 0x31, 0x2e, 0x53, 0x65,
+	0x74, 0x50, 0x72, 0x6f, 0x66, 0x69, 0x6c, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a,
+	0x17, 0x2e, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e, 0x76, 0x31, 0x2e, 0x42, 0x6f, 0x6f, 0x6c,
+	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22, 0x29, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x23,
+	0x3a, 0x04, 0x62, 0x6f, 0x64, 0x79, 0x1a, 0x1b, 0x2f, 0x76, 0x31, 0x2f, 0x7b, 0x74, 0x65, 0x6e,
+	0x61, 0x6e, 0x74, 0x7d, 0x2f, 0x70, 0x72, 0x6f, 0x66, 0x69, 0x6c, 0x65, 0x73, 0x2f, 0x7b, 0x73,
+	0x75, 0x62, 0x7d, 0x12, 0x6f, 0x0a, 0x0d, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x50, 0x72, 0x6f,
+	0x66, 0x69, 0x6c, 0x65, 0x12, 0x20, 0x2e, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x2e, 0x76,
+	0x31, 0x2e, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x50, 0x72, 0x6f, 0x66, 0x69, 0x6c, 0x65, 0x52,
+	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x17, 0x2e, 0x63, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x2e,
+	0x76, 0x31, 0x2e, 0x42, 0x6f, 0x6f, 0x6c, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x22,
+	0x23, 0x82, 0xd3, 0xe4, 0x93, 0x02, 0x1d, 0x2a, 0x1b, 0x2f, 0x76, 0x31, 0x2f, 0x7b, 0x74, 0x65,
+	0x6e, 0x61, 0x6e, 0x74, 0x7d, 0x2f, 0x70, 0x72, 0x6f, 0x66, 0x69, 0x6c, 0x65, 0x73, 0x2f, 0x7b,
+	0x73, 0x75, 0x62, 0x7d, 0x42, 0x9e, 0x01, 0x0a, 0x0e, 0x63, 0x6f, 0x6d, 0x2e, 0x61, 0x63, 0x63,
+	0x6f, 0x75, 0x6e, 0x74, 0x2e, 0x76, 0x31, 0x42, 0x0c, 0x50, 0x72, 0x6f, 0x66, 0x69, 0x6c, 0x65,
+	0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50, 0x01, 0x5a, 0x35, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e,
+	0x63, 0x6f, 0x6d, 0x2f, 0x6d, 0x61, 0x72, 0x69, 0x65, 0x6a, 0x2d, 0x68, 0x72, 0x2f, 0x63, 0x6f,
+	0x72, 0x65, 0x2f, 0x64, 0x6f, 0x6d, 0x61, 0x69, 0x6e, 0x2f, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e,
+	0x74, 0x2f, 0x76, 0x31, 0x3b, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x76, 0x31, 0xa2, 0x02,
+	0x03, 0x41, 0x58, 0x58, 0xaa, 0x02, 0x0a, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x2e, 0x56,
+	0x31, 0xca, 0x02, 0x0a, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x5c, 0x56, 0x31, 0xe2, 0x02,
+	0x16, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x5c, 0x56, 0x31, 0x5c, 0x47, 0x50, 0x42, 0x4d,
+	0x65, 0x74, 0x61, 0x64, 0x61, 0x74, 0x61, 0xea, 0x02, 0x0b, 0x41, 0x63, 0x63, 0x6f, 0x75, 0x6e,
+	0x74, 0x3a, 0x3a, 0x56, 0x31, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -1888,7 +1954,7 @@ func file_account_v1_profile_proto_rawDescGZIP() []byte {
 }
 
 var file_account_v1_profile_proto_enumTypes = make([]protoimpl.EnumInfo, 3)
-var file_account_v1_profile_proto_msgTypes = make([]protoimpl.MessageInfo, 19)
+var file_account_v1_profile_proto_msgTypes = make([]protoimpl.MessageInfo, 20)
 var file_account_v1_profile_proto_goTypes = []interface{}{
 	(Profile_Experience_Employment)(0), // 0: account.v1.Profile.Experience.Employment
 	(Profile_Experience_Modality)(0),   // 1: account.v1.Profile.Experience.Modality
@@ -1899,60 +1965,63 @@ var file_account_v1_profile_proto_goTypes = []interface{}{
 	(*GetProfilesRequest)(nil),         // 6: account.v1.GetProfilesRequest
 	(*GetProfilesResponse)(nil),        // 7: account.v1.GetProfilesResponse
 	(*SetProfileRequest)(nil),          // 8: account.v1.SetProfileRequest
-	(*Profile_Address)(nil),            // 9: account.v1.Profile.Address
-	(*Profile_Location)(nil),           // 10: account.v1.Profile.Location
-	(*Profile_Experience)(nil),         // 11: account.v1.Profile.Experience
-	(*Profile_Education)(nil),          // 12: account.v1.Profile.Education
-	(*Profile_Certification)(nil),      // 13: account.v1.Profile.Certification
-	(*Profile_Skill)(nil),              // 14: account.v1.Profile.Skill
-	(*Profile_Award)(nil),              // 15: account.v1.Profile.Award
-	(*Profile_Language)(nil),           // 16: account.v1.Profile.Language
-	(*Profile_Interest)(nil),           // 17: account.v1.Profile.Interest
-	(*Profile_Interest_Sport)(nil),     // 18: account.v1.Profile.Interest.Sport
-	(*Profile_Interest_Art)(nil),       // 19: account.v1.Profile.Interest.Art
-	(*Profile_Interest_Company)(nil),   // 20: account.v1.Profile.Interest.Company
-	(*Profile_Interest_Person)(nil),    // 21: account.v1.Profile.Interest.Person
-	(*v1.Pagination)(nil),              // 22: common.v1.Pagination
-	(*timestamppb.Timestamp)(nil),      // 23: google.protobuf.Timestamp
-	(*v1.BoolResponse)(nil),            // 24: common.v1.BoolResponse
+	(*DeleteProfileRequest)(nil),       // 9: account.v1.DeleteProfileRequest
+	(*Profile_Address)(nil),            // 10: account.v1.Profile.Address
+	(*Profile_Location)(nil),           // 11: account.v1.Profile.Location
+	(*Profile_Experience)(nil),         // 12: account.v1.Profile.Experience
+	(*Profile_Education)(nil),          // 13: account.v1.Profile.Education
+	(*Profile_Certification)(nil),      // 14: account.v1.Profile.Certification
+	(*Profile_Skill)(nil),              // 15: account.v1.Profile.Skill
+	(*Profile_Award)(nil),              // 16: account.v1.Profile.Award
+	(*Profile_Language)(nil),           // 17: account.v1.Profile.Language
+	(*Profile_Interest)(nil),           // 18: account.v1.Profile.Interest
+	(*Profile_Interest_Sport)(nil),     // 19: account.v1.Profile.Interest.Sport
+	(*Profile_Interest_Art)(nil),       // 20: account.v1.Profile.Interest.Art
+	(*Profile_Interest_Company)(nil),   // 21: account.v1.Profile.Interest.Company
+	(*Profile_Interest_Person)(nil),    // 22: account.v1.Profile.Interest.Person
+	(*v1.Pagination)(nil),              // 23: common.v1.Pagination
+	(*timestamppb.Timestamp)(nil),      // 24: google.protobuf.Timestamp
+	(*v1.BoolResponse)(nil),            // 25: common.v1.BoolResponse
 }
 var file_account_v1_profile_proto_depIdxs = []int32{
-	9,  // 0: account.v1.Profile.address:type_name -> account.v1.Profile.Address
-	11, // 1: account.v1.Profile.experiences:type_name -> account.v1.Profile.Experience
-	12, // 2: account.v1.Profile.educations:type_name -> account.v1.Profile.Education
-	13, // 3: account.v1.Profile.certifications:type_name -> account.v1.Profile.Certification
-	14, // 4: account.v1.Profile.skills:type_name -> account.v1.Profile.Skill
-	15, // 5: account.v1.Profile.awards:type_name -> account.v1.Profile.Award
-	16, // 6: account.v1.Profile.languages:type_name -> account.v1.Profile.Language
-	17, // 7: account.v1.Profile.interests:type_name -> account.v1.Profile.Interest
+	10, // 0: account.v1.Profile.address:type_name -> account.v1.Profile.Address
+	12, // 1: account.v1.Profile.experiences:type_name -> account.v1.Profile.Experience
+	13, // 2: account.v1.Profile.educations:type_name -> account.v1.Profile.Education
+	14, // 3: account.v1.Profile.certifications:type_name -> account.v1.Profile.Certification
+	15, // 4: account.v1.Profile.skills:type_name -> account.v1.Profile.Skill
+	16, // 5: account.v1.Profile.awards:type_name -> account.v1.Profile.Award
+	17, // 6: account.v1.Profile.languages:type_name -> account.v1.Profile.Language
+	18, // 7: account.v1.Profile.interests:type_name -> account.v1.Profile.Interest
 	3,  // 8: account.v1.GetProfileResponse.profile:type_name -> account.v1.Profile
-	22, // 9: account.v1.GetProfilesRequest.pagination:type_name -> common.v1.Pagination
+	23, // 9: account.v1.GetProfilesRequest.pagination:type_name -> common.v1.Pagination
 	3,  // 10: account.v1.GetProfilesResponse.profiles:type_name -> account.v1.Profile
 	3,  // 11: account.v1.SetProfileRequest.body:type_name -> account.v1.Profile
-	10, // 12: account.v1.Profile.Experience.location:type_name -> account.v1.Profile.Location
-	23, // 13: account.v1.Profile.Experience.start_date:type_name -> google.protobuf.Timestamp
-	23, // 14: account.v1.Profile.Experience.end_date:type_name -> google.protobuf.Timestamp
+	11, // 12: account.v1.Profile.Experience.location:type_name -> account.v1.Profile.Location
+	24, // 13: account.v1.Profile.Experience.start_date:type_name -> google.protobuf.Timestamp
+	24, // 14: account.v1.Profile.Experience.end_date:type_name -> google.protobuf.Timestamp
 	0,  // 15: account.v1.Profile.Experience.employment_type:type_name -> account.v1.Profile.Experience.Employment
 	1,  // 16: account.v1.Profile.Experience.modality_type:type_name -> account.v1.Profile.Experience.Modality
-	10, // 17: account.v1.Profile.Education.location:type_name -> account.v1.Profile.Location
-	23, // 18: account.v1.Profile.Education.start_date:type_name -> google.protobuf.Timestamp
-	23, // 19: account.v1.Profile.Education.end_date:type_name -> google.protobuf.Timestamp
-	23, // 20: account.v1.Profile.Certification.issue_date:type_name -> google.protobuf.Timestamp
-	23, // 21: account.v1.Profile.Certification.expiration_date:type_name -> google.protobuf.Timestamp
-	23, // 22: account.v1.Profile.Award.issue_date:type_name -> google.protobuf.Timestamp
+	11, // 17: account.v1.Profile.Education.location:type_name -> account.v1.Profile.Location
+	24, // 18: account.v1.Profile.Education.start_date:type_name -> google.protobuf.Timestamp
+	24, // 19: account.v1.Profile.Education.end_date:type_name -> google.protobuf.Timestamp
+	24, // 20: account.v1.Profile.Certification.issue_date:type_name -> google.protobuf.Timestamp
+	24, // 21: account.v1.Profile.Certification.expiration_date:type_name -> google.protobuf.Timestamp
+	24, // 22: account.v1.Profile.Award.issue_date:type_name -> google.protobuf.Timestamp
 	2,  // 23: account.v1.Profile.Language.proficiency:type_name -> account.v1.Profile.Language.Proficiency
-	18, // 24: account.v1.Profile.Interest.sport:type_name -> account.v1.Profile.Interest.Sport
-	19, // 25: account.v1.Profile.Interest.art:type_name -> account.v1.Profile.Interest.Art
-	20, // 26: account.v1.Profile.Interest.company:type_name -> account.v1.Profile.Interest.Company
-	21, // 27: account.v1.Profile.Interest.person:type_name -> account.v1.Profile.Interest.Person
+	19, // 24: account.v1.Profile.Interest.sport:type_name -> account.v1.Profile.Interest.Sport
+	20, // 25: account.v1.Profile.Interest.art:type_name -> account.v1.Profile.Interest.Art
+	21, // 26: account.v1.Profile.Interest.company:type_name -> account.v1.Profile.Interest.Company
+	22, // 27: account.v1.Profile.Interest.person:type_name -> account.v1.Profile.Interest.Person
 	4,  // 28: account.v1.ProfileService.GetProfile:input_type -> account.v1.GetProfileRequest
 	6,  // 29: account.v1.ProfileService.GetProfiles:input_type -> account.v1.GetProfilesRequest
 	8,  // 30: account.v1.ProfileService.SetProfile:input_type -> account.v1.SetProfileRequest
-	5,  // 31: account.v1.ProfileService.GetProfile:output_type -> account.v1.GetProfileResponse
-	7,  // 32: account.v1.ProfileService.GetProfiles:output_type -> account.v1.GetProfilesResponse
-	24, // 33: account.v1.ProfileService.SetProfile:output_type -> common.v1.BoolResponse
-	31, // [31:34] is the sub-list for method output_type
-	28, // [28:31] is the sub-list for method input_type
+	9,  // 31: account.v1.ProfileService.DeleteProfile:input_type -> account.v1.DeleteProfileRequest
+	5,  // 32: account.v1.ProfileService.GetProfile:output_type -> account.v1.GetProfileResponse
+	7,  // 33: account.v1.ProfileService.GetProfiles:output_type -> account.v1.GetProfilesResponse
+	25, // 34: account.v1.ProfileService.SetProfile:output_type -> common.v1.BoolResponse
+	25, // 35: account.v1.ProfileService.DeleteProfile:output_type -> common.v1.BoolResponse
+	32, // [32:36] is the sub-list for method output_type
+	28, // [28:32] is the sub-list for method input_type
 	28, // [28:28] is the sub-list for extension type_name
 	28, // [28:28] is the sub-list for extension extendee
 	0,  // [0:28] is the sub-list for field type_name
@@ -2037,7 +2106,7 @@ func file_account_v1_profile_proto_init() {
 			}
 		}
 		file_account_v1_profile_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Profile_Address); i {
+			switch v := v.(*DeleteProfileRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2049,7 +2118,7 @@ func file_account_v1_profile_proto_init() {
 			}
 		}
 		file_account_v1_profile_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Profile_Location); i {
+			switch v := v.(*Profile_Address); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2061,7 +2130,7 @@ func file_account_v1_profile_proto_init() {
 			}
 		}
 		file_account_v1_profile_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Profile_Experience); i {
+			switch v := v.(*Profile_Location); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2073,7 +2142,7 @@ func file_account_v1_profile_proto_init() {
 			}
 		}
 		file_account_v1_profile_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Profile_Education); i {
+			switch v := v.(*Profile_Experience); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2085,7 +2154,7 @@ func file_account_v1_profile_proto_init() {
 			}
 		}
 		file_account_v1_profile_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Profile_Certification); i {
+			switch v := v.(*Profile_Education); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2097,7 +2166,7 @@ func file_account_v1_profile_proto_init() {
 			}
 		}
 		file_account_v1_profile_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Profile_Skill); i {
+			switch v := v.(*Profile_Certification); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2109,7 +2178,7 @@ func file_account_v1_profile_proto_init() {
 			}
 		}
 		file_account_v1_profile_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Profile_Award); i {
+			switch v := v.(*Profile_Skill); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2121,7 +2190,7 @@ func file_account_v1_profile_proto_init() {
 			}
 		}
 		file_account_v1_profile_proto_msgTypes[13].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Profile_Language); i {
+			switch v := v.(*Profile_Award); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2133,7 +2202,7 @@ func file_account_v1_profile_proto_init() {
 			}
 		}
 		file_account_v1_profile_proto_msgTypes[14].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Profile_Interest); i {
+			switch v := v.(*Profile_Language); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2145,7 +2214,7 @@ func file_account_v1_profile_proto_init() {
 			}
 		}
 		file_account_v1_profile_proto_msgTypes[15].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Profile_Interest_Sport); i {
+			switch v := v.(*Profile_Interest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2157,7 +2226,7 @@ func file_account_v1_profile_proto_init() {
 			}
 		}
 		file_account_v1_profile_proto_msgTypes[16].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Profile_Interest_Art); i {
+			switch v := v.(*Profile_Interest_Sport); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2169,7 +2238,7 @@ func file_account_v1_profile_proto_init() {
 			}
 		}
 		file_account_v1_profile_proto_msgTypes[17].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Profile_Interest_Company); i {
+			switch v := v.(*Profile_Interest_Art); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -2181,6 +2250,18 @@ func file_account_v1_profile_proto_init() {
 			}
 		}
 		file_account_v1_profile_proto_msgTypes[18].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*Profile_Interest_Company); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_account_v1_profile_proto_msgTypes[19].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*Profile_Interest_Person); i {
 			case 0:
 				return &v.state
@@ -2195,12 +2276,12 @@ func file_account_v1_profile_proto_init() {
 	}
 	file_account_v1_profile_proto_msgTypes[0].OneofWrappers = []interface{}{}
 	file_account_v1_profile_proto_msgTypes[4].OneofWrappers = []interface{}{}
-	file_account_v1_profile_proto_msgTypes[6].OneofWrappers = []interface{}{}
-	file_account_v1_profile_proto_msgTypes[8].OneofWrappers = []interface{}{}
+	file_account_v1_profile_proto_msgTypes[7].OneofWrappers = []interface{}{}
 	file_account_v1_profile_proto_msgTypes[9].OneofWrappers = []interface{}{}
 	file_account_v1_profile_proto_msgTypes[10].OneofWrappers = []interface{}{}
-	file_account_v1_profile_proto_msgTypes[12].OneofWrappers = []interface{}{}
-	file_account_v1_profile_proto_msgTypes[14].OneofWrappers = []interface{}{
+	file_account_v1_profile_proto_msgTypes[11].OneofWrappers = []interface{}{}
+	file_account_v1_profile_proto_msgTypes[13].OneofWrappers = []interface{}{}
+	file_account_v1_profile_proto_msgTypes[15].OneofWrappers = []interface{}{
 		(*Profile_Interest_Sport_)(nil),
 		(*Profile_Interest_Art_)(nil),
 		(*Profile_Interest_Company_)(nil),
@@ -2212,7 +2293,7 @@ func file_account_v1_profile_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_account_v1_profile_proto_rawDesc,
 			NumEnums:      3,
-			NumMessages:   19,
+			NumMessages:   20,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
