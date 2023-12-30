@@ -1,6 +1,8 @@
 syntax = "proto3";
 package account.v1;
 
+import "common/v1/request.proto";
+import "common/v1/response.proto";
 import "google/api/annotations.proto";
 import "google/api/httpbody.proto";
 import "google/protobuf/timestamp.proto";
@@ -133,7 +135,18 @@ message Profile {
 service ProfileService {
   rpc GetProfile(GetProfileRequest) returns (GetProfileResponse) {
     option (google.api.http) = {
-      get : "/v1/{tenant}/profile/{sub}"
+      get : "/v1/{tenant}/profiles/{sub}"
+    };
+  };
+  rpc GetProfiles(GetProfilesRequest) returns (GetProfilesResponse) {
+    option (google.api.http) = {
+      get : "/v1/{tenant}/profiles"
+    };
+  };
+  rpc SetProfile(SetProfileRequest) returns (common.v1.BoolResponse) {
+    option (google.api.http) = {
+      put : "/v1/{tenant}/profiles/{sub}"
+      body : "body"
     };
   };
 }
@@ -143,3 +156,19 @@ message GetProfileRequest {
   string sub = 2;
 }
 message GetProfileResponse { Profile profile = 1; }
+
+message GetProfilesRequest {
+  string tenant = 1;
+  common.v1.Pagination pagination = 2;
+}
+
+message GetProfilesResponse {
+  repeated Profile profiles = 1;
+  optional int64 count = 2;
+}
+
+message SetProfileRequest {
+  string tenant = 1;
+  string sub = 2;
+  Profile body = 3;
+}

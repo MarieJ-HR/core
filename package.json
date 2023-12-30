@@ -1,6 +1,6 @@
 {
   "name": "mariej-core",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "license": "MIT",
   "author": "Amaury Diaz <amauryuh@gmail.com>",
   "description": "This package contains openapi definitions for mariej human resources project"

@@ -15,6 +15,12 @@
       "name": "AccountService"
     },
     {
+      "name": "AccountAccessService"
+    },
+    {
+      "name": "AccountAdminService"
+    },
+    {
       "name": "ProfileService"
     },
     {
@@ -145,6 +151,158 @@
         ],
         "tags": [
           "HealthService"
+        ]
+      }
+    },
+    "/v1/{tenant}/accounts": {
+      "get": {
+        "operationId": "AccountAdminService_GetAccounts",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1GetAccountsResponse"
+            }
+          },
+          "400": {
+            "description": "Bad request.",
+            "schema": {
+              "$ref": "#/definitions/v1ErrorResponse"
+            }
+          },
+          "403": {
+            "description": "Unauthorized.",
+            "schema": {
+              "$ref": "#/definitions/protobufEmpty"
+            }
+          },
+          "404": {
+            "description": "Not found.",
+            "schema": {
+              "$ref": "#/definitions/protobufEmpty"
+            }
+          },
+          "500": {
+            "description": "Server error.",
+            "schema": {
+              "$ref": "#/definitions/protobufEmpty"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "filter.sub",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "filter.email",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "filter.username",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "pagination.limit",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pagination.offset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pagination.orderBy",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "AccountAdminService"
+        ]
+      },
+      "post": {
+        "operationId": "AccountAdminService_CreateAccount",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1CreateAccountResponse"
+            }
+          },
+          "400": {
+            "description": "Bad request.",
+            "schema": {
+              "$ref": "#/definitions/v1ErrorResponse"
+            }
+          },
+          "403": {
+            "description": "Unauthorized.",
+            "schema": {
+              "$ref": "#/definitions/protobufEmpty"
+            }
+          },
+          "404": {
+            "description": "Not found.",
+            "schema": {
+              "$ref": "#/definitions/protobufEmpty"
+            }
+          },
+          "500": {
+            "description": "Server error.",
+            "schema": {
+              "$ref": "#/definitions/protobufEmpty"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1CreateAccountRequestBody"
+            }
+          }
+        ],
+        "tags": [
+          "AccountAdminService"
         ]
       }
     },
@@ -282,7 +440,515 @@
         ]
       }
     },
-    "/v1/{tenant}/profile/{sub}": {
+    "/v1/{tenant}/accounts/{sub}": {
+      "get": {
+        "operationId": "AccountAdminService_GetAccount",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1GetAccountResponse"
+            }
+          },
+          "400": {
+            "description": "Bad request.",
+            "schema": {
+              "$ref": "#/definitions/v1ErrorResponse"
+            }
+          },
+          "403": {
+            "description": "Unauthorized.",
+            "schema": {
+              "$ref": "#/definitions/protobufEmpty"
+            }
+          },
+          "404": {
+            "description": "Not found.",
+            "schema": {
+              "$ref": "#/definitions/protobufEmpty"
+            }
+          },
+          "500": {
+            "description": "Server error.",
+            "schema": {
+              "$ref": "#/definitions/protobufEmpty"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "sub",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "AccountAdminService"
+        ]
+      },
+      "delete": {
+        "operationId": "AccountAdminService_DeleteAccount",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1DeleteAccountResponse"
+            }
+          },
+          "400": {
+            "description": "Bad request.",
+            "schema": {
+              "$ref": "#/definitions/v1ErrorResponse"
+            }
+          },
+          "403": {
+            "description": "Unauthorized.",
+            "schema": {
+              "$ref": "#/definitions/protobufEmpty"
+            }
+          },
+          "404": {
+            "description": "Not found.",
+            "schema": {
+              "$ref": "#/definitions/protobufEmpty"
+            }
+          },
+          "500": {
+            "description": "Server error.",
+            "schema": {
+              "$ref": "#/definitions/protobufEmpty"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "sub",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "AccountAdminService"
+        ]
+      },
+      "put": {
+        "operationId": "AccountAdminService_UpdateAccount",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1UpdateAccountResponse"
+            }
+          },
+          "400": {
+            "description": "Bad request.",
+            "schema": {
+              "$ref": "#/definitions/v1ErrorResponse"
+            }
+          },
+          "403": {
+            "description": "Unauthorized.",
+            "schema": {
+              "$ref": "#/definitions/protobufEmpty"
+            }
+          },
+          "404": {
+            "description": "Not found.",
+            "schema": {
+              "$ref": "#/definitions/protobufEmpty"
+            }
+          },
+          "500": {
+            "description": "Server error.",
+            "schema": {
+              "$ref": "#/definitions/protobufEmpty"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "sub",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1UpdateAccountRequestBody"
+            }
+          }
+        ],
+        "tags": [
+          "AccountAdminService"
+        ]
+      }
+    },
+    "/v1/{tenant}/accounts/{sub}/roles": {
+      "get": {
+        "operationId": "AccountAccessService_GetRoles",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1GetRolesResponse"
+            }
+          },
+          "400": {
+            "description": "Bad request.",
+            "schema": {
+              "$ref": "#/definitions/v1ErrorResponse"
+            }
+          },
+          "403": {
+            "description": "Unauthorized.",
+            "schema": {
+              "$ref": "#/definitions/protobufEmpty"
+            }
+          },
+          "404": {
+            "description": "Not found.",
+            "schema": {
+              "$ref": "#/definitions/protobufEmpty"
+            }
+          },
+          "500": {
+            "description": "Server error.",
+            "schema": {
+              "$ref": "#/definitions/protobufEmpty"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "sub",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "scope",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "SCOPE_UNSPECIFIED",
+              "SCOPE_SYSTEM"
+            ],
+            "default": "SCOPE_UNSPECIFIED"
+          },
+          {
+            "name": "resource",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "AccountAccessService"
+        ]
+      },
+      "post": {
+        "operationId": "AccountAccessService_GrantRole",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1BoolResponse"
+            }
+          },
+          "400": {
+            "description": "Bad request.",
+            "schema": {
+              "$ref": "#/definitions/v1ErrorResponse"
+            }
+          },
+          "403": {
+            "description": "Unauthorized.",
+            "schema": {
+              "$ref": "#/definitions/protobufEmpty"
+            }
+          },
+          "404": {
+            "description": "Not found.",
+            "schema": {
+              "$ref": "#/definitions/protobufEmpty"
+            }
+          },
+          "500": {
+            "description": "Server error.",
+            "schema": {
+              "$ref": "#/definitions/protobufEmpty"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "sub",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "role",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1Role"
+            }
+          },
+          {
+            "name": "scope",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "SCOPE_UNSPECIFIED",
+              "SCOPE_SYSTEM"
+            ],
+            "default": "SCOPE_UNSPECIFIED"
+          },
+          {
+            "name": "resource",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "AccountAccessService"
+        ]
+      }
+    },
+    "/v1/{tenant}/accounts/{sub}/roles/{role}": {
+      "delete": {
+        "operationId": "AccountAccessService_RevokeRole",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1BoolResponse"
+            }
+          },
+          "400": {
+            "description": "Bad request.",
+            "schema": {
+              "$ref": "#/definitions/v1ErrorResponse"
+            }
+          },
+          "403": {
+            "description": "Unauthorized.",
+            "schema": {
+              "$ref": "#/definitions/protobufEmpty"
+            }
+          },
+          "404": {
+            "description": "Not found.",
+            "schema": {
+              "$ref": "#/definitions/protobufEmpty"
+            }
+          },
+          "500": {
+            "description": "Server error.",
+            "schema": {
+              "$ref": "#/definitions/protobufEmpty"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "sub",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "role",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "ROLE_UNSPECIFIED",
+              "ROLE_ADMIN",
+              "ROLE_MANAGER",
+              "ROLE_USER",
+              "ROLE_GUEST"
+            ]
+          },
+          {
+            "name": "scope",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "SCOPE_UNSPECIFIED",
+              "SCOPE_SYSTEM"
+            ],
+            "default": "SCOPE_UNSPECIFIED"
+          },
+          {
+            "name": "resource",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "AccountAccessService"
+        ]
+      }
+    },
+    "/v1/{tenant}/profiles": {
+      "get": {
+        "operationId": "ProfileService_GetProfiles",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1GetProfilesResponse"
+            }
+          },
+          "400": {
+            "description": "Bad request.",
+            "schema": {
+              "$ref": "#/definitions/v1ErrorResponse"
+            }
+          },
+          "403": {
+            "description": "Unauthorized.",
+            "schema": {
+              "$ref": "#/definitions/protobufEmpty"
+            }
+          },
+          "404": {
+            "description": "Not found.",
+            "schema": {
+              "$ref": "#/definitions/protobufEmpty"
+            }
+          },
+          "500": {
+            "description": "Server error.",
+            "schema": {
+              "$ref": "#/definitions/protobufEmpty"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "pagination.limit",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pagination.offset",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "pagination.orderBy",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "ProfileService"
+        ]
+      }
+    },
+    "/v1/{tenant}/profiles/{sub}": {
       "get": {
         "operationId": "ProfileService_GetProfile",
         "responses": {
@@ -335,6 +1001,72 @@
             "in": "path",
             "required": true,
             "type": "string"
+          }
+        ],
+        "tags": [
+          "ProfileService"
+        ]
+      },
+      "put": {
+        "operationId": "ProfileService_SetProfile",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1BoolResponse"
+            }
+          },
+          "400": {
+            "description": "Bad request.",
+            "schema": {
+              "$ref": "#/definitions/v1ErrorResponse"
+            }
+          },
+          "403": {
+            "description": "Unauthorized.",
+            "schema": {
+              "$ref": "#/definitions/protobufEmpty"
+            }
+          },
+          "404": {
+            "description": "Not found.",
+            "schema": {
+              "$ref": "#/definitions/protobufEmpty"
+            }
+          },
+          "500": {
+            "description": "Server error.",
+            "schema": {
+              "$ref": "#/definitions/protobufEmpty"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "tenant",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "sub",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1Profile"
+            }
           }
         ],
         "tags": [
@@ -690,6 +1422,50 @@
         }
       }
     },
+    "v1AccountFilter": {
+      "type": "object",
+      "properties": {
+        "sub": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "username": {
+          "type": "string"
+        }
+      }
+    },
+    "v1BoolResponse": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "boolean"
+        }
+      }
+    },
+    "v1CreateAccountRequestBody": {
+      "type": "object",
+      "properties": {
+        "sub": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "username": {
+          "type": "string"
+        }
+      }
+    },
+    "v1CreateAccountResponse": {
+      "type": "object",
+      "properties": {
+        "account": {
+          "$ref": "#/definitions/v1Account"
+        }
+      }
+    },
     "v1CurrentAccountResourceResponse": {
       "type": "object",
       "properties": {
@@ -706,11 +1482,42 @@
         }
       }
     },
+    "v1DeleteAccountResponse": {
+      "type": "object",
+      "properties": {
+        "account": {
+          "$ref": "#/definitions/v1Account"
+        }
+      }
+    },
     "v1ErrorResponse": {
       "type": "object",
       "properties": {
         "message": {
           "type": "string"
+        }
+      }
+    },
+    "v1GetAccountResponse": {
+      "type": "object",
+      "properties": {
+        "account": {
+          "$ref": "#/definitions/v1Account"
+        }
+      }
+    },
+    "v1GetAccountsResponse": {
+      "type": "object",
+      "properties": {
+        "accounts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Account"
+          }
+        },
+        "count": {
+          "type": "string",
+          "format": "int64"
         }
       }
     },
@@ -722,11 +1529,53 @@
         }
       }
     },
+    "v1GetProfilesResponse": {
+      "type": "object",
+      "properties": {
+        "profiles": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Profile"
+          }
+        },
+        "count": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "v1GetRolesResponse": {
+      "type": "object",
+      "properties": {
+        "roles": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Role"
+          }
+        }
+      }
+    },
     "v1HealthCheckResponse": {
       "type": "object",
       "properties": {
         "status": {
           "$ref": "#/definitions/HealthCheckResponseServingStatus"
+        }
+      }
+    },
+    "v1Pagination": {
+      "type": "object",
+      "properties": {
+        "limit": {
+          "type": "string",
+          "format": "int64"
+        },
+        "offset": {
+          "type": "string",
+          "format": "int64"
+        },
+        "orderBy": {
+          "type": "string"
         }
       }
     },
@@ -828,6 +1677,25 @@
         "SCOPE_SYSTEM"
       ],
       "default": "SCOPE_UNSPECIFIED"
+    },
+    "v1UpdateAccountRequestBody": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "username": {
+          "type": "string"
+        }
+      }
+    },
+    "v1UpdateAccountResponse": {
+      "type": "object",
+      "properties": {
+        "account": {
+          "$ref": "#/definitions/v1Account"
+        }
+      }
     }
   },
   "securityDefinitions": {

@@ -2,6 +2,8 @@ syntax = "proto3";
 package account.v1;
 
 import "account/v1/role.proto";
+import "common/v1/request.proto";
+import "common/v1/response.proto";
 import "google/api/annotations.proto";
 import "google/api/httpbody.proto";
 // import "google/protobuf/duration.proto";
@@ -19,6 +21,15 @@ message Account {
   google.protobuf.Timestamp last_login = 7;
 }
 
+message AccountFilter {
+  oneof filter {
+    string sub = 1;
+    string email = 2;
+    string username = 3;
+  }
+}
+
+// NORMAL SERVICES
 service AccountService {
   rpc CurrentAccount(CurrentAccountRequest) returns (CurrentAccountResponse) {
     option (google.api.http) = {
@@ -45,3 +56,122 @@ message CurrentAccountResourceRequest {
   string resource = 3;
 }
 message CurrentAccountResourceResponse { Account account = 1; }
+
+// ROLE MANAGEMENT SERVICES
+service AccountAccessService {
+  rpc GetRoles(GetRolesRequest) returns (GetRolesResponse) {
+    option (google.api.http) = {
+      get : "/v1/{tenant}/accounts/{sub}/roles"
+    };
+  };
+  rpc GrantRole(GrantRoleRequest) returns (common.v1.BoolResponse) {
+    option (google.api.http) = {
+      post : "/v1/{tenant}/accounts/{sub}/roles"
+      body : "role"
+    };
+  };
+  rpc RevokeRole(RevokeRoleRequest) returns (common.v1.BoolResponse) {
+    option (google.api.http) = {
+      delete : "/v1/{tenant}/accounts/{sub}/roles/{role}"
+    };
+  };
+}
+
+message GetRolesRequest {
+  string tenant = 1;
+  string sub = 2;
+  Scope scope = 3;
+  string resource = 4;
+}
+message GetRolesResponse { repeated Role roles = 1; }
+
+message GrantRoleRequest {
+  string tenant = 1;
+  string sub = 2;
+  Scope scope = 3;
+  string resource = 4;
+  Role role = 5;
+}
+
+message RevokeRoleRequest {
+  string tenant = 1;
+  string sub = 2;
+  Scope scope = 3;
+  string resource = 4;
+  Role role = 5;
+}
+
+// ADMIN CRUD SERVICES
+service AccountAdminService {
+  rpc GetAccount(GetAccountRequest) returns (GetAccountResponse) {
+    option (google.api.http) = {
+      get : "/v1/{tenant}/accounts/{sub}"
+    };
+  };
+  rpc GetAccounts(GetAccountsRequest) returns (GetAccountsResponse) {
+    option (google.api.http) = {
+      get : "/v1/{tenant}/accounts"
+    };
+  }
+  rpc CreateAccount(CreateAccountRequest) returns (CreateAccountResponse) {
+    option (google.api.http) = {
+      post : "/v1/{tenant}/accounts"
+      body : "body"
+    };
+  }
+  rpc UpdateAccount(UpdateAccountRequest) returns (UpdateAccountResponse) {
+    option (google.api.http) = {
+      put : "/v1/{tenant}/accounts/{sub}"
+      body : "body"
+    };
+  }
+  rpc DeleteAccount(DeleteAccountRequest) returns (DeleteAccountResponse) {
+    option (google.api.http) = {
+      delete : "/v1/{tenant}/accounts/{sub}"
+    };
+  }
+}
+
+message GetAccountRequest {
+  string tenant = 1;
+  string sub = 2;
+}
+message GetAccountResponse { Account account = 1; }
+
+message GetAccountsRequest {
+  string tenant = 1;
+  optional AccountFilter filter = 2;
+  optional common.v1.Pagination pagination = 3;
+}
+message GetAccountsResponse {
+  repeated Account accounts = 1;
+  optional int64 count = 2;
+}
+
+message CreateAccountRequest {
+  message Body {
+    string sub = 1;
+    string email = 2;
+    string username = 3;
+  }
+  string tenant = 1;
+  Body body = 2;
+}
+message CreateAccountResponse { Account account = 1; }
+
+message UpdateAccountRequest {
+  message Body {
+    string email = 2;
+    string username = 3;
+  }
+  string tenant = 1;
+  string sub = 2;
+  Body body = 3;
+}
+message UpdateAccountResponse { Account account = 1; }
+
+message DeleteAccountRequest {
+  string tenant = 1;
+  string sub = 2;
+}
+message DeleteAccountResponse { Account account = 1; }
