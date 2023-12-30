@@ -361,7 +361,9 @@
             "type": "string",
             "enum": [
               "SCOPE_UNSPECIFIED",
-              "SCOPE_SYSTEM"
+              "SCOPE_SYSTEM",
+              "SCOPE_ACCOUNT",
+              "SCOPE_PROFILE"
             ]
           }
         ],
@@ -425,7 +427,9 @@
             "type": "string",
             "enum": [
               "SCOPE_UNSPECIFIED",
-              "SCOPE_SYSTEM"
+              "SCOPE_SYSTEM",
+              "SCOPE_ACCOUNT",
+              "SCOPE_PROFILE"
             ]
           },
           {
@@ -680,12 +684,15 @@
           },
           {
             "name": "scope",
+            "description": " - SCOPE_UNSPECIFIED: Scope is not defined\n - SCOPE_SYSTEM: System scope, roles in this scope are applied to other scopes as well.\n - SCOPE_ACCOUNT: Account scope, roles applied on this scope are specific to AccountService\ninteraction.\n - SCOPE_PROFILE: Profile scope, roles applied on this scope are specific to ProfileService\ninteraction.",
             "in": "query",
             "required": false,
             "type": "string",
             "enum": [
               "SCOPE_UNSPECIFIED",
-              "SCOPE_SYSTEM"
+              "SCOPE_SYSTEM",
+              "SCOPE_ACCOUNT",
+              "SCOPE_PROFILE"
             ],
             "default": "SCOPE_UNSPECIFIED"
           },
@@ -763,12 +770,15 @@
           },
           {
             "name": "scope",
+            "description": " - SCOPE_UNSPECIFIED: Scope is not defined\n - SCOPE_SYSTEM: System scope, roles in this scope are applied to other scopes as well.\n - SCOPE_ACCOUNT: Account scope, roles applied on this scope are specific to AccountService\ninteraction.\n - SCOPE_PROFILE: Profile scope, roles applied on this scope are specific to ProfileService\ninteraction.",
             "in": "query",
             "required": false,
             "type": "string",
             "enum": [
               "SCOPE_UNSPECIFIED",
-              "SCOPE_SYSTEM"
+              "SCOPE_SYSTEM",
+              "SCOPE_ACCOUNT",
+              "SCOPE_PROFILE"
             ],
             "default": "SCOPE_UNSPECIFIED"
           },
@@ -853,12 +863,15 @@
           },
           {
             "name": "scope",
+            "description": " - SCOPE_UNSPECIFIED: Scope is not defined\n - SCOPE_SYSTEM: System scope, roles in this scope are applied to other scopes as well.\n - SCOPE_ACCOUNT: Account scope, roles applied on this scope are specific to AccountService\ninteraction.\n - SCOPE_PROFILE: Profile scope, roles applied on this scope are specific to ProfileService\ninteraction.",
             "in": "query",
             "required": false,
             "type": "string",
             "enum": [
               "SCOPE_UNSPECIFIED",
-              "SCOPE_SYSTEM"
+              "SCOPE_SYSTEM",
+              "SCOPE_ACCOUNT",
+              "SCOPE_PROFILE"
             ],
             "default": "SCOPE_UNSPECIFIED"
           },
@@ -1668,15 +1681,18 @@
         "ROLE_GUEST"
       ],
       "default": "ROLE_UNSPECIFIED",
-      "title": "- ROLE_UNSPECIFIED: Role is not defined\n - ROLE_ADMIN: View all data. Create new managers"
+      "description": " - ROLE_UNSPECIFIED: Role is not defined\n - ROLE_ADMIN: View all data. Assign other roles, including Admin role."
     },
     "v1Scope": {
       "type": "string",
       "enum": [
         "SCOPE_UNSPECIFIED",
-        "SCOPE_SYSTEM"
+        "SCOPE_SYSTEM",
+        "SCOPE_ACCOUNT",
+        "SCOPE_PROFILE"
       ],
-      "default": "SCOPE_UNSPECIFIED"
+      "default": "SCOPE_UNSPECIFIED",
+      "description": " - SCOPE_UNSPECIFIED: Scope is not defined\n - SCOPE_SYSTEM: System scope, roles in this scope are applied to other scopes as well.\n - SCOPE_ACCOUNT: Account scope, roles applied on this scope are specific to AccountService\ninteraction.\n - SCOPE_PROFILE: Profile scope, roles applied on this scope are specific to ProfileService\ninteraction."
     },
     "v1UpdateAccountRequestBody": {
       "type": "object",

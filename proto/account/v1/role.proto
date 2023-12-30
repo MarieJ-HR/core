@@ -1,14 +1,22 @@
 syntax = "proto3";
 package account.v1;
 enum Scope {
+  /* Scope is not defined */
   SCOPE_UNSPECIFIED = 0;
+  /* System scope, roles in this scope are applied to other scopes as well. */
   SCOPE_SYSTEM = 1;
+  /* Account scope, roles applied on this scope are specific to AccountService
+   * interaction. */
+  SCOPE_ACCOUNT = 2;
+  /* Profile scope, roles applied on this scope are specific to ProfileService
+   * interaction. */
+  SCOPE_PROFILE = 3;
 }
 
 enum Role {
   /* Role is not defined */
   ROLE_UNSPECIFIED = 0;
-  /* View all data. Create new managers */
+  /* View all data. Assign other roles, including Admin role. */
   ROLE_ADMIN = 1;
   ROLE_MANAGER = 2;
   ROLE_USER = 4;
